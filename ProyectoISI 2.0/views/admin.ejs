@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <title>Admin</title>
+</head>
+
+<body>
+
+    <div id="contenedor">
+        <h1>Registrar candidatos</h1>
+        <form class="formulario" action="/registrarC" enctype="multipart/form-data" id="registrarCandidato"
+            method="post">
+            <div id="der">
+                <div class="labels">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" required>
+
+                    <label for="cedula">Cedula</label>
+                    <input type="text" name="cedula" id="cedula" title="Solo caracteres númericos, de 5 a 10 digitos"
+                    pattern="[0-9]{5,10}" required>
+
+                    <label for="part">Partido</label>
+                    <select name="partidos" id="part" required>
+                        <% for(let i=0; i<partido.length;i++){%>
+                            <option value="<%= partido[i].id_partido%>">
+                                <%=partido[i].nombre %>
+                            </option>
+                            <%}%>
+                    </select>
+
+                    <label for="cand">Candidatura</label>
+                    <select name="candidatura" id="cand" required>
+                        <% for(let i=0; i<candidatura.length;i++){%>
+                            <option value="<%= candidatura[i].id%>">
+                                <%=candidatura[i].nombre%>
+                            </option>
+                            <%}%>
+                    </select>
+
+                    <label for="cand">Votacion</label>
+                    <select name="votacion" id="votacion" required>
+                        <% for(let i=0; i<votacion.length;i++){%>
+                            <option value="<%= votacion[i].id%>">
+                                <%=votacion[i].nombre%>
+                            </option>
+                            <%}%>
+                    </select>
+                </div>
+
+            </div>
+
+            <div id="izq">
+                <label for="foto">Foto</label>
+                <div id="img-c">
+                    <img src="../images/addimg.png" class="img" id="imagen">
+                </div>
+                <input type="file" name="foto" accept="images/*" onchange="verImagen(event,'#imagen')" required
+                    id="foto">
+                <p>*La foto para mejor visualización debe tener una relación de aspecto 3:4</p>
+            </div>
+
+            <button type="submit" class="btn">Registrar</button>
+
+        </form>
+    </div>
+
+    <div id="contenedor">
+        <h1>Registrar sufragante</h1>
+        <form class="formulario" action="/registrarS" id="registrarSufragante" method="post">
+            <div id="der">
+                <div class="labels">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" id="nombre" required>
+
+                    <label>Cedula</label>
+                    <input type="text" name="cedula" id="cedula" pattern="[0-9]{5,10}"
+                        title="Solo caracteres númericos, de 5 a 10 digitos" required>
+
+                    <label>Celular</label>
+                    <input type="text" name="celular" id="celular" pattern="[0-9]{10}"
+                        title="Solo caracteres númericos, 10 digitos" required>
+                </div>
+            </div>
+            <button type="submit" class="btn">Registrar</button>
+
+        </form>
+    </div>
+
+    <div id="contenedor">
+        <h1>Registrar Partido</h1>
+        <form class="formulario" action="/registrarP" id="registrarPartido" method="post">
+            <div id="der">
+                <div class="labels">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" required>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn">Registrar</button>
+        </form>
+    </div>
+
+    <div id="contenedor">
+        <h1>Registrar Votacion</h1>
+        <form class="formulario" action="/registrarV" id="registrarVotacion" method="post">
+            <div id="der">
+                <div class="labels">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" required>
+
+                    <label for="fechaI">Fecha</label>
+                    <input type="date" name="fecha" id="fechaI">
+
+                    <label for="HoraI">Hora inicio</label>
+                    <input type="time" name="inicio" id="HoraI">
+
+                    <label for="HoraF">Hora final</label>
+                    <input type="time" name="fin" id="HoraF">
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn">Registrar</button>
+
+        </form>
+    </div>
+    <script>
+        function verImagen(event, querySelector) {
+            const input = event.target;
+
+            $imgPreview = document.querySelector(querySelector);
+
+            if (!input.files.length) return
+            file = input.files[0];
+
+            objectURL = URL.createObjectURL(file);
+
+            if (objectURL == "") {
+                $imgPreview.src = "../images/addimg.png";
+            } else {
+                $imgPreview.src = objectURL;
+            }
+
+        }
+
+        const mensaje = async()=> {
+            if ("<%= mensaje %>" != "") {
+                await window.confirm("<%= mensaje %>");
+            }
+        }
+
+        mensaje();
+        
+        document.getElementById("registrarVotacion").addEventListener("submit", function (event) {
+            // Obtener los valores de las horas desde los inputs
+            let horaI = document.getElementById("HoraI").value;
+            let horaF = document.getElementById("HoraF").value;
+
+            // Validar las horas
+            if (horaI >= horaF) {
+                // Si la validación no se cumple, cancelar el envío del formulario
+                event.preventDefault();
+                alert("La Hora inicio debe ser mayor que la Hora fin.");
+            }
+        });
+
+    </script>
+</body>
+
+</html>

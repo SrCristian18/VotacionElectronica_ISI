@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="Es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/inicio.css">
+    <title>
+        <%if(tiempo.length>0){%>
+            <%= tiempo[0].nombre %>
+        <% }else{ %>
+        Votaciones
+        <% } %>
+    </title>
+</head>
+
+<body>
+    <div class="cuerpo">
+
+        <div class="content">
+            <h1>
+                <%if(tiempo.length>0){%>
+                    <%= tiempo[0].nombre %>
+                <% }else{ %>
+                Votaciones
+                <% } %>
+            </h1>
+            <form action="/inicio" method="post" id="inicio">
+                <label>Cédula de ciudadanía</label>
+                <input type="text" name="id" pattern="[0-9]{5,10}" title="Solo numeros de 5-10 digitos" id="id" required>
+
+                <label>Codigo de verificacion</label>
+                <input type="password" name="codigoV" id="codigoV" required>
+                <label>Seleccione una opcion</label>
+                <div class="botones">
+                    
+                    <%if(tiempo.length>0){%>
+                        <input name="eleccion" value="0" type="radio" required>Votar</button>
+                    <%}%>
+                    
+                    <input name="eleccion" value="1" type="radio" required>Generar certificado</button>
+                </div>
+
+                <button class="btn" type="submit">Continuar</button>
+            </form>
+
+            <%if (tiempo.length>0){%>
+                <p>Los resultados podran ser consultados despues de:</p>
+                <%}%>
+
+                    <div class="tiempo" id="tiempo">
+                        <% if(tiempo.length>0){
+                            var fecha = real[0].tiempo.split(":");
+                            var horas = parseInt(fecha[0], 10);
+                            var minutos = parseInt(fecha[1], 10);
+                            var segundos = parseInt(fecha[2], 10);%>
+
+                            <div class="t">
+                                <label>Hora</label>
+
+                                <div class="count">
+                                    <label id="h">
+                                        <%=horas%>
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <div class="t">
+                                <label>Min</label>
+
+                                <div class="count">
+                                    <label id="m">
+                                        <%=minutos%>
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <div class="t">
+                                <label>Seg</label>
+
+                                <div class="count">
+                                    <label id="s">
+                                        <%=segundos%>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <%}else{%>
+                                <a href="/verResultados">Ver resultados</a>
+                                <%}%>
+                    </div>
+
+                    <p>“El voto es preciado. Es la herramienta sin violencia
+                        más poderosa que tenemos en una sociedad democrática y
+                        debemos usarla” -Jhon Lewis</p>
+
+        </div>
+
+        <div class="inspirate">
+            <div class="sidebar">
+                <h1>¿Porque Votar?</h1>
+                <div class="razones">
+                    <h2>Tu voto cuenta</h2>
+                    <p>Cada voto es relevante. Tu voto puede hacer la diferencia en una elección y
+                        aunque parezca mínimo, muestra una tendencia y expresa una opinión.</p>
+                </div>
+                <div class="razones">
+                    <h2>Tu voto para elegir buenos representantes</h2>
+                    <p>Constantemente los medios de comunicación publican informaciones que revelan
+                        hechos de corrupción. Lo más curioso es que esos mismos políticos son elegidos
+                        de nuevo. Si somos conscientes de la importancia de nuestro voto, sabremos votar
+                        por representantes en los que confiemos o en los que, al menos, veamos valores y
+                        principios que nos representen.</p>
+                </div>
+                <div class="razones">
+                    <h2>Tu voto es tu voz democrática</h2>
+                    <p>Votar es una de las formas de participación democrática básica. Votando se eligen
+                        los representantes que dirigen los futuros de nuestro territorio y, en cierto sentido,
+                        de nuestra vida en esos territorios. Por ejemplo, si un gobernante define malas políticas
+                        económicas, esto podría acarrear en situaciones de aumento de desempleo, disminución de los
+                        ingresos en las familias y hasta aumento de los precios de los alimentos.</p>
+                </div>
+                <div class="razones">
+                    <h2>Tu voto es un derecho</h2>
+                    <p>En muchos países ni siquiera existe la posibilidad de votar para elegir gobernantes, los cuales
+                        son descendientes de castas tradicionales, familias monárquicas o dictadores autonombrados. La
+                        vida democrática nos permite elegir nuestros representantes y delegar las funciones públicas,
+                        que son un servicio para la sociedad, en personas destacadas por sus capacidades y esfuerzos
+                        por construir un mejor entorno común.</p>
+                </div>
+                <div class="razones">
+                    <h2>Tu voto es un ejemplo</h2>
+                    <p>¿Quieres que tus hijos vivan en un lugar mejor? Cuando votas y compartes esta decisión en
+                        familia, inculcas en las nuevas generaciones esa misma manifestación de interés por lo público.
+                        Así,
+                        ellos comprenderán que el voto es un deber y una posibilidad de que los ciudadanos elijamos y
+                        seamos
+                        elegidos.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="js/inicio.js"></script>
+    <script>
+        async function mensaje() {
+            if ("<%= mensaje %>" != "") {
+                window.confirm("<%= mensaje %>");
+            }
+        }
+
+        mensaje();
+    </script>
+</body>
+
+</html>

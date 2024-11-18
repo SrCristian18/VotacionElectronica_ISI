@@ -1,0 +1,83 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #39A7FF;
+    gap: 20px;
+}
+
+.container{
+    background-color: #E0F4FF;
+    color: cadetblue;
+    width: 90%;
+    padding: 2%;
+    border-radius: 30px;
+}
+
+select{
+    background-color: #39A7FF;
+    color: white;
+    border: none;
+    padding: 0.5%;
+    border-radius: 30px;
+    outline: none;
+}
+
+select:hover{
+    background-color: cadetblue;
+}
+
+.resultados{
+    background-color: #E0F4FF;
+    width: 90%;
+    padding: 2%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.izq{
+    background-color: #39A7FF;
+    width: 30%;
+    min-width: 340px;
+    min-height: 600px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;;
+    padding: 2%;
+    gap: 20px;
+    align-items: center;
+}
+
+.der{
+    background-color: #39A7FF;
+    width: 60%;
+    min-width: 350px;
+    min-height: 600px;
+    border-radius: 30px;
+    overflow: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+canvas{
+   
+    max-width: 600px;
+}
+
+.casilla{
+    width: 80%;
+    background-color: #E0F4FF;
+    padding: 2%;
+    border-radius: 30px;
+    color: cadetblue;
+}
+

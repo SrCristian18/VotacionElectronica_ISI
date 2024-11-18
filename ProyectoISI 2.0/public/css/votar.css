@@ -1,0 +1,166 @@
+body {
+    background-color: #39A7FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    padding: 1%;
+    color: cadetblue;
+    gap: 10px;
+}
+
+#encabezado {
+    background-color: #E0F4FF;
+    width: 90%;
+    padding: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 30px;
+}
+
+.b {
+    font-size: 130%;
+    outline: none;
+}
+
+#b-1 {
+    font-size: 130%;
+    margin-right: 2%;
+}
+
+.busqueda {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#nombre {
+    width: 80%;
+    border: none;
+    border-radius: 30px;
+    padding: 1%;
+}
+
+.candidatos {
+    border-radius: 30px;
+    width: 90%;
+    padding: 5%;
+    background-color: #E0F4FF;
+    margin-top: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.checkeable{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkeable label{
+    width: 100%;
+}
+.checkeable input {
+    display: none;
+}
+
+.checkeable img {
+    width: 130px;
+    aspect-ratio: 3/4;
+    border: 5px solid transparent;
+    border-radius: 30px;
+}
+
+.checkeable input:checked+img {
+    border-color: cadetblue;
+}
+
+.casilla{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.casilla:hover{
+    transform: scale(1.2);
+}
+
+#separador{
+    width: 100%;
+    height: 5px;
+    background-color: cadetblue;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#candidatos{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.btn{
+    width: 150px ;
+    font-size: x-large;
+    padding: 1%;
+    border: none;
+    margin: 20px;
+    align-self: center;
+    border-radius: 30px;
+    background-color: cadetblue;
+    color: white;
+}
+
+.btn:hover{
+    background-color: #E0F4FF;
+    transform: scale(1.1);
+}
+
+
+#votar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 90%;
+    background-color: #E0F4FF;
+    padding: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 30px;
+}
+
+.cand{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+#name{
+    width: 120px;
+    text-align: center;
+    overflow: hidden;
+}
+
+#id{
+    background-color: #E0F4FF;
+    width: 150px;
+    padding: 2%;
+    font-size: large;
+    border-radius: 30px;
+    color: cadetblue;
+    outline: none;
+    border: none;
+    text-align: center;
+}

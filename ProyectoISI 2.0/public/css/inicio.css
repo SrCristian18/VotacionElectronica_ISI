@@ -1,0 +1,160 @@
+body{
+    background-color: #39A7FF;
+    align-items: center;
+    align-content: center;
+    padding: 1%;
+
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+label{
+    font-size: 130%;
+}
+
+input{
+    border-radius: 30px;
+    font-size: 130%;
+    outline: none;
+    padding: 1%;
+    border: none;
+}
+
+.cuerpo{
+    font-size: 100%;
+    display: flex;
+    max-height: 400px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+.content{
+    background-color: #E0F4FF;
+    padding: 3%;
+    max-width: 500px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    color: cadetblue;
+    margin: 2.5%;
+    gap: 10px;
+}
+
+.inspirate{
+    background-color: #E0F4FF;
+    color: cadetblue;
+    border-radius: 30px;
+    max-width: 500px;     
+    max-height: 480px;
+    padding: 3%;
+    overflow: auto;
+    margin: 2.5%;
+}
+
+.tiempo{
+    width: 100%;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.t{
+    display: flex;
+    height: 80%;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.count{
+    width: 60px;
+    height: 40px;
+    background-color: #39A7FF;
+    padding: 5%;
+    font-size: 120%;
+    color: white;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#id{
+    border: none;
+    font-size: 20px;
+    margin-bottom: 1%;
+}
+
+.botones{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+#votar{
+    width: 20%;
+    min-width: none;
+    margin-right: 1rem;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+}
+
+#reloj{
+    display: flex;
+    flex-direction: row;
+}
+
+.btn{
+    background-color: #39A7FF;
+    width: 50%;
+    min-height: 30px;
+    min-width: 14px;
+    font-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 1%;
+    border-radius: 30px;
+    border: none;
+}
+
+.btn:hover{
+    background-color: cadetblue;
+    transform: scale(1.1);
+}
+
+#img{
+    width: 50px;
+    aspect-ratio: 3/4;
+}
+
+#inicio{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+a{
+    text-decoration: none;
+    background-color: #39A7FF;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 30px;
+    color: white;
+}
+a:hover{
+    background-color: cadetblue;
+    transform: scale(1.1);
+}

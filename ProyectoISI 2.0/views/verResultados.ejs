@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="Es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/resultados.css">
+    <script src="chart.js"></script>
+    <title>Resultados</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Resultados</h1>
+
+        <div id="opcion">
+            <label>Votacion</label>
+
+            <select name="votacion" id="votacion" onchange="actualizar()">
+                <% for(let i=0; i<votacion.length;i++){ %>
+                    <option value="<%= votacion[i].id%>">
+                        <%=votacion[i].nombre%>
+                    </option>
+                    <%}%>
+            </select>
+
+            <select name="candidatura" id="candidatura" onchange="actualizar()">
+                <% for(let i=0; i<candidatura.length;i++){%>
+                    <option value="<%= candidatura[i].id%>">
+                        <%=candidatura[i].nombre%>
+                    </option>
+                    <%}%>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="resultados">
+        <div class="izq" id="izq"></div>
+        <div class="der" id="der">
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    function clearInner(node) {
+        while (node.hasChildNodes()) {
+            clear(node.firstChild);
+        }
+    }
+
+    function clear(node) {
+        while (node.hasChildNodes()) {
+            clear(node.firstChild);
+        }
+        node.parentNode.removeChild(node);
+    }
+
+    function actualizar() {
+
+        let izq = document.getElementById("izq");
+        let der = document.getElementById("der");
+
+        clearInner(izq);
+
+        let casilla = []; document.createElement("div");
+        let lablel = []; document.createElement("label");
+        let vot = document.getElementById("votacion").value;
+        let candidatura = document.getElementById("candidatura").value;
+
+        let label = [];
+        let datos = [];
+
+        let titulo = "";
+
+        <%for(let x = 0; x<votacion.length; x++){%>
+            if(<%=votacion[x].id%> == vot){
+                titulo = "<%=votacion[x].nombre %>"
+            }
+        <%}%>
+
+        <% for (let i = 0; i < votos.length; i++) {%>
+
+            if (<%= votos[i].votacion %> == vot) {
+
+                if (<%= votos[i].candidatura %> == candidatura) {
+                    casilla.push(document.createElement("div"));
+                    casilla[casilla.length - 1].className = "casilla";
+
+                    lablel.push(document.createElement("label"));
+
+                    lablel[lablel.length - 1].innerText = `${"<%=votos[i].nombre%>"}: ${"<%=votos[i].nVotos%>"}`;
+                    label.push("<%=votos[i].nombre%>");
+                    datos.push("<%=votos[i].nVotos%>");
+
+                    casilla[casilla.length - 1].appendChild(lablel[lablel.length - 1]);
+
+                    izq.appendChild(casilla[casilla.length - 1]);
+                }
+
+            }
+            
+        <%}%>
+
+            clearInner(der);
+        let barras = document.createElement("canvas");
+
+        new Chart(barras, {
+            type: 'bar',
+            data: {
+
+                labels: label,
+                datasets: [{
+                    label: titulo,
+                    data: datos,
+                    borderWidth: 1,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        let pie = document.createElement("canvas");
+
+        new Chart(pie, {
+            type: 'pie',
+            data: {
+
+                labels: label,
+                datasets: [{
+                    label: titulo,
+                    data: datos,
+                    borderWidth: 1,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ]
+                }]
+            },
+            options: {
+                width: 100,
+                height: 200,
+
+                scales: {
+                    x: {
+                        display: false
+                    },
+                    y: {
+                        display: false,
+                        beginAtZero: true
+                    }
+                }
+            }
+
+        });
+
+        der.appendChild(barras);
+        der.appendChild(pie);
+    }
+
+    actualizar();
+</script>
+
+</html>

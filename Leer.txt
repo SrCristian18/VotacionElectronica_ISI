@@ -1,0 +1,3 @@
+Abrir con Vscode
+
+PD: Dentro del ZIP está la carpeta de ProyectoISI 2.0

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="Es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/votar.css">
+    <title>Votaciones 2023</title>
+</head>
+
+<body>
+    <div id="encabezado">
+        <h1 id="titulo">Votar</h1>
+        <div class="busqueda">
+            <label class="b" id="b-1">Buscar</label>
+            <input type="text" class="b" id="nombre" onkeyup="filtro()">
+        </div>
+    </div>
+    <form action="/votar" method="post">
+        
+        <input type="text" name="id" id="id" readonly value=<%= votante[0].cedula %>>
+        <%for(let x=0; x< can.length; x++){%>
+            <div class="candidatos">
+                <h1>
+                    <%= can[x].nombre %>
+                </h1>
+                <div id="separador"></div>
+                <div class="cand">
+                    <%for(let y=0; y < candidatos.length; y++){ if(candidatos[y].candidatura==x){%>
+                        <div class="casilla">
+                            <label class="checkeable">
+                                <input type="radio" required name=<%= can[x].nombre %> value=<%= candidatos[y].id_candidato %>>
+                                <img src="/uploads/<%=candidatos[y].foto%>">
+                            </label>
+                            <label id="name">
+                                <%= candidatos[y].nombre %>
+                            </label>
+                        </div>
+                        <%}}%>
+                </div>
+            </div>
+            <%}%>
+        <button type="submit" class="btn">Votar</button>
+    </form>
+
+</body>
+
+<script>
+    
+function filtro() {
+    let input = document.getElementById('nombre');
+    let nom = String(input.value.toUpperCase());
+    let contenedor = document.getElementsByClassName("cand");
+
+    for (let x = 0; x < contenedor.length; x++) {
+        let casilla = contenedor[x].getElementsByTagName("div");
+
+        for (let z = 0; z < casilla.length; z++) {
+            let nombre = casilla[z].getElementsByTagName("label")[1];
+            let cmp = nombre.innerText;
+
+            if(cmp.toUpperCase().indexOf(nom)>-1){
+                casilla[z].style.display="";
+            }else{
+                casilla[z].style.display="none";
+            }
+        }
+
+    }
+
+}
+</script>
+
+</html>

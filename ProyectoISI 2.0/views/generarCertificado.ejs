@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/generarC.css">
+    <title>Certificados</title>
+</head>
+<body>
+    <div>
+        <h1>Certificados</h1>
+        <div>
+            <form action="/certificado" method="post">
+
+                <input type="text" name="id" id="id" value="<%=votante[0].cedula%>" readonly>
+    
+                <select name="votacion" id="votacion" required>
+                    
+                    <% for(let i=0; i<votacion.length;i++){ %>
+                        <option value=<%=votacion[i].votacion%>>
+                            <%=votacion[i].nombre%>
+                        </option>
+                        <%}%>
+                </select>
+    
+                <button type="submit">Generar</button>
+            </form>
+        </div>
+        
+    </div>
+    
+
+</body>
+</html>
